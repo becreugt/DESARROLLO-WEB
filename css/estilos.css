@@ -229,3 +229,46 @@ table tbody tr:hover {
 .js {
     width: 50%;
 }
+/* =========================================
+   ESTILOS PARA HABILIDADES TÉCNICAS (BARRAS)
+   ========================================= */
+
+.habilidad {
+    margin-bottom: 20px;
+}
+
+/* Para separar el texto del porcentaje a los extremos */
+.info-habilidad {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #0d47a1;
+    margin-bottom: 6px;
+}
+
+/* El fondo claro de la barra */
+.barra-base {
+    background-color: #e0e0e0;
+    height: 12px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+/* El relleno azul de la barra según el porcentaje */
+.barra-progreso {
+    height: 100%;
+    background-color: #1976d2;
+    border-radius: 6px;
+}
+
+.html-css {
+    width: 85%;
+}
+
+.datos {
+    width: 70%;
+}
+
+.js {
+    width: 50%;
+}
