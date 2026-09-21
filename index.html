@@ -4,25 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Cambie el título: es el texto de la pestaña del navegador
-       y el que aparece en los resultados de búsqueda. -->
   <title>PAGINA DESARROLLO WEB</title>
-  <meta name="description" content="Resumen del sitio en una sola línea.">
+  <meta name="description" content="Sitio personal y portafolio profesional de Carlos Bonilla.">
 
-  <!-- La hoja de estilos se trabaja a partir de la sesión 3. -->
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-  <!-- Un solo h1 por página. Aquí va su nombre o el título del sitio. -->
   <h1>PAGINA DE CARLOS BONILLA</h1>
-  <H2>CURSO DESARROLLO WEB</H2>
+  <h2>CURSO DESARROLLO WEB</h2>
 
-  <!-- El contenido de la sesión 1 se escribe a partir de aquí:
-       párrafos, encabezados h2, listas, enlaces e imágenes.
-       Las imágenes van en la carpeta img y se llaman así:
-       <img src="img/perfil.jpg" alt="Descripción de la imagen"> -->
-<header>
+  <header>
     <nav>
       <a href="index.html">INICIO</a>
       <a href="CONTACTOS.HTML">CONTACTO</a>
@@ -31,19 +23,70 @@
   </header>
 
   <main>
+    <!-- 1. SECCIÓN DE BIENVENIDA -->
     <section>
-      <h2>Servicios</h2>
-      <p>Ingeniería de datos.</p>
+      <h2>¡Bienvenido a mi sitio web!</h2>
+      <p style="font-size: 1.05rem; line-height: 1.6; text-align: center;">
+        Hola, soy <strong>Carlos Bonilla</strong>. Bienvenido a mi espacio personal del curso de Desarrollo Web. Aquí encontrarás información sobre mis servicios, experiencia profesional en ingeniería de datos y proyectos actuales.
+      </p>
+    </section>
+
+    <!-- 2. SECCIÓN DE SERVICIOS -->
+    <section style="margin-top: 30px;">
+      <h2>Servicios Profesionales</h2>
+      <p style="text-align: center;">Soluciones integrales de datos y desarrollo para impulsar proyectos digitales.</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 25px; text-align: left;">
+        
+        <!-- Servicio 1 -->
+        <div style="flex: 1; min-width: 200px; padding: 15px; border: 1px solid #bbdefb; border-radius: 6px; background-color: #f4f7fa;">
+          <h3 style="color: #0d47a1; margin-top: 0;">📊 Ingeniería de Datos</h3>
+          <p style="text-align: left; font-size: 0.9rem;">Diseño y optimización de bases de datos, flujos ETL y procesamiento masivo de información.</p>
+        </div>
+
+        <!-- Servicio 2 -->
+        <div style="flex: 1; min-width: 200px; padding: 15px; border: 1px solid #bbdefb; border-radius: 6px; background-color: #f4f7fa;">
+          <h3 style="color: #0d47a1; margin-top: 0;">💻 Desarrollo Web</h3>
+          <p style="text-align: left; font-size: 0.9rem;">Creación de sitios y aplicaciones web modernas, rápidas y adaptadas a cualquier dispositivo.</p>
+        </div>
+
+        <!-- Servicio 3 -->
+        <div style="flex: 1; min-width: 200px; padding: 15px; border: 1px solid #bbdefb; border-radius: 6px; background-color: #f4f7fa;">
+          <h3 style="color: #0d47a1; margin-top: 0;">📈 Analytics & Dashboards</h3>
+          <p style="text-align: left; font-size: 0.9rem;">Visualización de métricas clave para facilitar la toma de decisiones basadas en datos.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. SECCIÓN DE PROYECTOS DESTACADOS -->
+    <section style="margin-top: 30px;">
+      <h2>Proyectos Destacados</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+        
+        <div style="flex: 1; min-width: 220px; border-left: 4px solid #1976d2; padding-left: 15px; background: #f9fbfd;">
+          <h4 style="margin: 0; color: #0d47a1;">Sitio Web Personal</h4>
+          <p style="font-size: 0.85rem; margin: 5px 0 0 0; text-align: left;">Desarrollo en HTML5 y CSS3 para el curso de desarrollo web.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 220px; border-left: 4px solid #1976d2; padding-left: 15px; background: #f9fbfd;">
+          <h4 style="margin: 0; color: #0d47a1;">Pipeline de Datos ETL</h4>
+          <p style="font-size: 0.85rem; margin: 5px 0 0 0; text-align: left;">Automatización y limpieza de fuentes de datos mediante scripts personalizados.</p>
+        </div>
+
+      </div>
+
+      <!-- Botón de llamado a la acción -->
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="CONTACTOS.HTML" style="background-color: #1976d2; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block;">¿Tienes alguna consulta? Contáctame</a>
+      </div>
     </section>
   </main>
 
   <footer>
     <p>2026 BEC</p>
   </footer>
-</body>
 
-       
-  <!-- El JavaScript se trabaja a partir de la sesión 4. -->
   <script src="js/scripts.js"></script>
 </body>
 </html>
