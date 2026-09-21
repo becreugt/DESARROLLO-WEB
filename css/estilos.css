@@ -220,3 +220,13 @@ footer p {
     margin: 0;
     font-size: 14px;
 }
+/* Estilo para ajustar la foto de perfil */
+.perfil-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 15px auto;
+    border: 3px solid #1976d2;
+}
