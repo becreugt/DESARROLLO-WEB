@@ -3,26 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Cambie el título: es el texto de la pestaña del navegador
-       y el que aparece en los resultados de búsqueda. -->
   <title>PAGINA DESARROLLO WEB</title>
-  <meta name="description" content="Resumen del sitio en una sola línea.">
-
-  <!-- La hoja de estilos se trabaja a partir de la sesión 3. -->
+  <meta name="description" content="Perfil profesional de Carlos Bonilla">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-  <!-- Un solo h1 por página. Aquí va su nombre o el título del sitio. -->
   <h1>-PERFIL DE CARLOS BONILLA</h1>
-  <H2>CURSO DESARROLLO WEB</H2>
+  <h2>CURSO DESARROLLO WEB</h2>
 
-  <!-- El contenido de la sesión 1 se escribe a partir de aquí:
-       párrafos, encabezados h2, listas, enlaces e imágenes.
-       Las imágenes van en la carpeta img y se llaman así:
-       <img src="img/perfil.jpg" alt="Descripción de la imagen"> -->
-<header>
+  <header>
     <nav>
       <a href="index.html">Inicio</a>
       <a href="CONTACTOS.HTML">CONTACTO</a>
@@ -31,79 +21,102 @@
   </header>
 
   <main>
-    <section>
-      <h2>PERFIL</h2>
-      <p>INFORMACIÓN PERSONAL.</p>
+    <!-- SECCIÓN PERFIL CON TU FOTO -->
+    <section class="perfil-card">
+      <div class="perfil-header">
+        <img src="img/perfil.jpg" alt="Foto de Carlos Bonilla" class="perfil-avatar">
+        <div class="perfil-info">
+          <h2>Carlos Bonilla</h2>
+          <p class="titulo-profesional">Data Engineer & Full-Stack Web Developer</p>
+          <p class="descripcion-corta">
+            Especialista en la integración de canalizaciones de datos con interfaces web modernas. Apasionado por transformar datos complejos en soluciones visuales e intuitivas.
+          </p>
+        </div>
+      </div>
+
+      <!-- TECH STACK -->
+      <div class="tech-stack">
+        <span class="badge">Python</span>
+        <span class="badge">SQL / NoSQL</span>
+        <span class="badge">HTML5 & CSS3</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">Git / GitHub</span>
+      </div>
+
+      <!-- BOTONES DE ACCIÓN -->
+      <div class="perfil-acciones">
+        <a href="CONTACTOS.HTML" class="btn-primario">Contactar</a>
+        <a href="https://github.com" target="_blank" class="btn-secundario">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" class="btn-secundario">LinkedIn</a>
+      </div>
     </section>
-    
+
+    <!-- EXPERIENCIA LABORAL -->
     <section>
-    <h2>Experiencia Laboral</h2>
-    
-    <table>
+      <h2>Experiencia Laboral</h2>
+      <table>
         <thead>
-            <tr>
-                <th>Puesto</th>
-                <th>Empresa</th>
-                <th>Periodo</th>
-            </tr>
+          <tr>
+            <th>Puesto</th>
+            <th>Empresa</th>
+            <th>Periodo</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Ingeniero de Datos</td>
-                <td>Empresa X</td>
-                <td>2024 - Presente</td>
-            </tr>
-            <tr>
-                <td>Desarrollador Web</td>
-                <td>Empresa Y</td>
-                <td>2022 - 2024</td>
-            </tr>
+          <tr>
+            <td>Ingeniero de Datos</td>
+            <td>Empresa X</td>
+            <td>2024 - Presente</td>
+          </tr>
+          <tr>
+            <td>Desarrollador Web</td>
+            <td>Empresa Y</td>
+            <td>2022 - 2024</td>
+          </tr>
         </tbody>
-    </table>
-</section>
-<section>
-    <h2>Habilidades Técnicas</h2>
-    
-    <div class="habilidad">
-        <div class="info-habilidad">
-            <span>HTML & CSS</span>
-            <span>85%</span>
-        </div>
-        <div class="barra-base">
-            <div class="barra-progreso html-css"></div>
-        </div>
-    </div>
+      </table>
+    </section>
 
-    <div class="habilidad">
+    <!-- HABILIDADES TÉCNICAS -->
+    <section>
+      <h2>Habilidades Técnicas</h2>
+      
+      <div class="habilidad">
         <div class="info-habilidad">
-            <span>Ingeniería de Datos</span>
-            <span>70%</span>
+          <span>HTML & CSS</span>
+          <span>85%</span>
         </div>
         <div class="barra-base">
-            <div class="barra-progreso datos"></div>
+          <div class="barra-progreso html-css"></div>
         </div>
-    </div>
+      </div>
 
-    <div class="habilidad">
+      <div class="habilidad">
         <div class="info-habilidad">
-            <span>JavaScript</span>
-            <span>50%</span>
+          <span>Ingeniería de Datos</span>
+          <span>70%</span>
         </div>
         <div class="barra-base">
-            <div class="barra-progreso js"></div>
+          <div class="barra-progreso datos"></div>
         </div>
-    </div>
-</section>
-    
+      </div>
+
+      <div class="habilidad">
+        <div class="info-habilidad">
+          <span>JavaScript</span>
+          <span>50%</span>
+        </div>
+        <div class="barra-base">
+          <div class="barra-progreso js"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>2026 BEC</p>
   </footer>
-</body>
 
-       
-  <!-- El JavaScript se trabaja a partir de la sesión 4. -->
   <script src="js/scripts.js"></script>
 </body>
 </html>
