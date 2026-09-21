@@ -230,3 +230,34 @@ footer p {
     margin: 0 auto 15px auto;
     border: 3px solid #1976d2;
 }
+
+/* Tamaño y estilo para la foto de perfil */
+.perfil-avatar {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1976d2;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+/* Estilo para la lista de contacto dentro del perfil */
+.datos-contacto {
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+
+.datos-contacto p {
+  margin: 5px 0;
+}
+
+.datos-contacto a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.datos-contacto a:hover {
+  text-decoration: underline;
+}
