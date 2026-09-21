@@ -144,3 +144,88 @@ footer p {
     margin: 0;
     font-size: 14px;
 }
+/* =========================================
+   ESTILOS PARA TABLAS (EXPERIENCIA LABORAL)
+   ========================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina el espacio entre bordes */
+    margin: 20px 0;
+    font-size: 15px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    overflow: hidden; /* Mantiene las esquinas redondeadas */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Encabezado de la tabla */
+table th {
+    background-color: #1976d2; /* Azul principal */
+    color: #ffffff;            /* Texto blanco */
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: bold;
+}
+
+/* Celdas de datos */
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333333;
+}
+
+/* Filas alternadas (efecto cebra para mejor lectura) */
+table tbody tr:nth-of-type(even) {
+    background-color: #f4f7fa; /* Fondo azulado muy claro */
+}
+
+/* Resaltar fila al pasar el mouse */
+table tbody tr:hover {
+    background-color: #e3f2fd; /* Azul suave al pasar el cursor */
+}
+/* =========================================
+   ESTILOS PARA HABILIDADES TÉCNICAS
+   ========================================= */
+
+.habilidad {
+    margin-bottom: 20px;
+}
+
+/* Nombres de las habilidades y porcentajes */
+.info-habilidad {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #0d47a1; /* Azul oscuro */
+    margin-bottom: 6px;
+}
+
+/* Fondo gris/blanco claro de la barra */
+.barra-base {
+    background-color: #e0e0e0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Barra de nivel de habilidad (Azul) */
+.barra-progreso {
+    height: 100%;
+    background-color: #1976d2; /* Azul principal */
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+
+/* Porcentajes individuales de cada habilidad */
+.html-css {
+    width: 85%;
+}
+
+.datos {
+    width: 70%;
+}
+
+.js {
+    width: 50%;
+}
