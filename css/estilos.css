@@ -261,3 +261,113 @@ footer p {
 .datos-contacto a:hover {
   text-decoration: underline;
 }
+/* =========================================
+   ESTILOS GENERALES DE TÍTULOS Y ENCABEZADOS
+   ========================================= */
+
+/* Título principal de la página (PAGINA DE CARLOS BONILLA) */
+h1 {
+  color: #ffffff;
+  background-color: #0d47a1; /* Azul oscuro elegante */
+  text-align: center;
+  padding: 20px 10px;
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Subtítulo principal (CURSO DESARROLLO WEB) */
+body > h2 {
+  color: #1976d2; /* Azul medio */
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 15px 0 25px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Encabezados de secciones principales (Servicios, Proyectos, Perfil, etc.) */
+main section h2 {
+  color: #0d47a1;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+/* Línea decorativa debajo de cada h2 de sección */
+main section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #1976d2;
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Subtítulos dentro de tarjetas o servicios (h3) */
+h3 {
+  color: #1565c0;
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Subtítulos de proyectos o tarjetas secundarias (h4) */
+h4 {
+  color: #0d47a1;
+  font-size: 1.05rem;
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+/* =========================================
+   ESTILOS Y EFECTOS PARA EL MENÚ DE NAVEGACIÓN
+   ========================================= */
+
+/* Contenedor principal de la navegación */
+header {
+  background-color: #0d47a1; /* Azul oscuro elegante */
+  padding: 12px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Espaciado uniforme entre los botones */
+}
+
+/* Estilo base para cada enlace / botón */
+header nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.8px;
+  padding: 8px 18px;
+  border-radius: 20px; /* Bordes suavemente redondeados */
+  transition: all 0.3s ease; /* Transición fluida para todos los cambios */
+  position: relative;
+  display: inline-block;
+}
+
+/* EFECTO HOVER: Al pasar el cursor sobre los botones */
+header nav a:hover {
+  background-color: #ffffff;
+  color: #0d47a1; /* Cambia el texto a azul oscuro */
+  transform: translateY(-2px); /* Eleva ligeramente el botón */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra flotante */
+}
+
+/* EFECTO ACTIVE: Al hacer clic en el botón */
+header nav a:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
