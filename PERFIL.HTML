@@ -31,7 +31,7 @@
             Especialista en la integración de canalizaciones de datos con interfaces web modernas. Apasionado por transformar datos complejos en soluciones visuales e intuitivas.
           </p>
 
-          <!-- DATOS DE CONTACTO (CORREO Y MÓVIL) -->
+          <!-- DATOS DE CONTACTO -->
           <div class="datos-contacto">
             <p>📧 <strong>Correo:</strong> <a href="mailto:edoncut@hotmail.com">edoncut@hotmail.com</a></p>
             <p>📱 <strong>Móvil:</strong> <a href="tel:+50242550002">+(502) 42550002</a></p>
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <!-- TECH STACK -->
+      <!-- TECH STACK (FLEXBOX) -->
       <div class="tech-stack">
         <span class="badge">Python</span>
         <span class="badge">SQL / NoSQL</span>
@@ -48,89 +48,101 @@
         <span class="badge">Git / GitHub</span>
       </div>
 
-      <!-- BOTONES DE ACCIÓN -->
       <div class="perfil-acciones">
         <a href="CONTACTOS.HTML" class="btn-primario">Contactar</a>
       </div>
     </section>
 
-    <!-- EXPERIENCIA LABORAL -->
-    <section>
-      <h2>Experiencia Laboral</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Puesto</th>
-            <th>Empresa</th>
-            <th>Periodo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Ingeniero de Datos</td>
-            <td>Empresa CABORAM, S.A.</td>
-            <td>2024 - Presente</td>
-          </tr>
-          <tr>
-            <td>Desarrollador Web</td>
-            <td>Empresa TECNOSIS</td>
-            <td>2022 - 2024</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <!-- ESTRUCTURA DE 2 COLUMNAS (GRID) PARA COMPUTADORA -->
+    <div class="grid-dos-columnas">
+      <!-- EXPERIENCIA LABORAL -->
+      <section>
+        <h2>Experiencia Laboral</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Puesto</th>
+              <th>Empresa</th>
+              <th>Periodo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ingeniero de Datos</td>
+              <td>Empresa CABORAM, S.A.</td>
+              <td>2024 - Presente</td>
+            </tr>
+            <tr>
+              <td>Desarrollador Web</td>
+              <td>Empresa TECNOSIS</td>
+              <td>2022 - 2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-    <!-- HABILIDADES TÉCNICAS -->
-    <section>
-      <h2>Habilidades Técnicas</h2>
-      
-      <div class="habilidad">
-        <div class="info-habilidad">
-          <span>HTML & CSS</span>
-          <span>85%</span>
+      <!-- HABILIDADES TÉCNICAS -->
+      <section>
+        <h2>Habilidades Técnicas</h2>
+        
+        <div class="habilidad">
+          <div class="info-habilidad">
+            <span>HTML & CSS</span>
+            <span>85%</span>
+          </div>
+          <div class="barra-base">
+            <div class="barra-progreso html-css"></div>
+          </div>
         </div>
-        <div class="barra-base">
-          <div class="barra-progreso html-css"></div>
-        </div>
-      </div>
 
-      <div class="habilidad">
-        <div class="info-habilidad">
-          <span>Ingeniería de Datos</span>
-          <span>70%</span>
+        <div class="habilidad">
+          <div class="info-habilidad">
+            <span>Ingeniería de Datos</span>
+            <span>70%</span>
+          </div>
+          <div class="barra-base">
+            <div class="barra-progreso datos"></div>
+          </div>
         </div>
-        <div class="barra-base">
-          <div class="barra-progreso datos"></div>
-        </div>
-      </div>
 
-      <div class="habilidad">
-        <div class="info-habilidad">
-          <span>JavaScript</span>
-          <span>50%</span>
+        <div class="habilidad">
+          <div class="info-habilidad">
+            <span>JavaScript</span>
+            <span>50%</span>
+          </div>
+          <div class="barra-base">
+            <div class="barra-progreso js"></div>
+          </div>
         </div>
-        <div class="barra-base">
-          <div class="barra-progreso js"></div>
-        </div>
-      </div>
-    </section>
-    <!-- SECCIÓN PROYECTOS -->
+      </section>
+    </div>
+
+    <!-- SECCIÓN PROYECTOS (TARJETAS CON FLEXBOX Y GRID) -->
     <section>
       <h2>Proyectos</h2>
       <div class="tarjetas">
         <article>
-          <h3>Pipeline de Datos ETL</h3>
-          <p>Automatización e ingesta de datos a gran escala utilizando Python y SQL.</p>
+          <div class="contenido-tarjeta">
+            <h3>Pipeline de Datos ETL</h3>
+            <p>Ingesta y procesamiento masivo de datos con validaciones automatizadas.</p>
+          </div>
+          <a href="#" class="btn-proyecto">Ver detalles</a>
+        </article>
+        
+        <article>
+          <div class="contenido-tarjeta">
+            <h3>Dashboard Web</h3>
+            <p>Panel interactivo en tiempo real para visualización de métricas clave.</p>
+          </div>
+          <a href="#" class="btn-proyecto">Ver detalles</a>
         </article>
 
         <article>
-          <h3>Dashboard Web</h3>
-          <p>Panel interactivo para la visualización de métricas y análisis de datos en tiempo real.</p>
-        </article>
-
-        <article>
-          <h3>Aplicación Web Responsive</h3>
-          <p>Plataforma web construida con HTML, CSS y JavaScript siguiendo diseño adaptable.</p>
+          <div class="contenido-tarjeta">
+            <h3>Aplicación Web Responsive</h3>
+            <p>Interfaz adaptable para usuarios construida con HTML5 y CSS3.</p>
+          </div>
+          <a href="#" class="btn-proyecto">Ver detalles</a>
         </article>
       </div>
     </section>
