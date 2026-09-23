@@ -37,7 +37,7 @@ h1 {
   text-align: center;
   padding: 20px 10px 5px 10px;
   margin: 0;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
@@ -48,7 +48,7 @@ h1 {
   text-align: center;
   margin: 0;
   padding-bottom: 15px;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 /* BARRA DE NAVEGACIÓN EN ENCABEZADO */
@@ -385,4 +385,65 @@ footer p {
   display: block !important;
   opacity: 1;
   margin-top: 15px;
+}
+/* =========================================
+   ESTILOS PARA EL FORMULARIO DE CONTACTO
+   ========================================= */
+
+/* Hace que los campos ocupen el 100% del contenedor */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+  padding: 10px 14px;
+  margin-top: 5px;
+  margin-bottom: 18px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-family: var(--fuente-texto);
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al hacer clic o escribir dentro del campo */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+  border-color: var(--acento);
+  outline: none;
+  box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
+}
+
+/* Permitir redimensionar solo verticalmente el área de texto */
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Estilo para los labels del formulario */
+form label {
+  font-weight: bold;
+  color: var(--principal);
+  display: block;
+}
+
+/* Estilo para el botón Enviar del formulario */
+form button[type="submit"],
+form input[type="submit"] {
+  background-color: var(--acento);
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button[type="submit"]:hover,
+form input[type="submit"]:hover {
+  background-color: var(--principal);
+  transform: translateY(-2px);
 }
