@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAGINA DESARROLLO WEB</title>
-  <meta name="description" content="Perfil profesional de Carlos Bonilla">
+  <title>Perfil - Carlos Bonilla</title>
   <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/scripts.js" defer></script>
 </head>
 <body>
 
+  <!-- ENCABEZADO Y TÍTULOS PRINCIPALES -->
   <h1>PERFIL DE CARLOS EDMUNDO BONILLA</h1>
-  <h2 class="clase-cursiva">Ingeniero en Sistemas</h2>
+  <p class="subtitulo-header clase-cursiva">Ingeniero en Sistemas</p>
+
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
   <header>
     <nav>
-      <a href="index.html">INICIO</a>
+      <a href="INDEX.HTML">INICIO</a>
       <a href="CONTACTOS.HTML">CONTACTO</a>
-      <a href="PERFIL.HTML">PERFIL</a>
+      <a href="PERFIL.HTML" class="activo">PERFIL</a>
     </nav>
   </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <main>
-    <!-- SECCIÓN PERFIL CON TU FOTO Y DATOS DE CONTACTO -->
+    <!-- SECCIÓN PERFIL CON FOTO Y DATOS -->
     <section class="perfil-card">
       <div class="perfil-header">
         <img src="img/perfil.jpg" alt="Foto de Carlos Bonilla" class="perfil-avatar">
@@ -39,7 +43,7 @@
         </div>
       </div>
 
-      <!-- TECH STACK (FLEXBOX) -->
+      <!-- TECH STACK BADGES -->
       <div class="tech-stack">
         <span class="badge">Python</span>
         <span class="badge">SQL / NoSQL</span>
@@ -48,15 +52,16 @@
         <span class="badge">Git / GitHub</span>
       </div>
 
-      <div class="perfil-acciones">
+      <div class="perfil-acciones" style="text-align: center;">
         <a href="CONTACTOS.HTML" class="btn-primario">Contactar</a>
       </div>
     </section>
 
-    <!-- ESTRUCTURA DE 2 COLUMNAS (GRID) PARA COMPUTADORA -->
+    <!-- GRID DE 2 COLUMNAS (EXPERIENCIA Y HABILIDADES) -->
     <div class="grid-dos-columnas">
+      
       <!-- EXPERIENCIA LABORAL -->
-      <section>
+      <section class="tarjeta-efecto">
         <h2>Experiencia Laboral</h2>
         <table>
           <thead>
@@ -82,7 +87,7 @@
       </section>
 
       <!-- HABILIDADES TÉCNICAS -->
-      <section>
+      <section class="tarjeta-efecto">
         <h2>Habilidades Técnicas</h2>
         
         <div class="habilidad">
@@ -117,41 +122,84 @@
       </section>
     </div>
 
-    <!-- SECCIÓN PROYECTOS (TARJETAS CON FLEXBOX Y GRID) -->
+    <!-- SECCIÓN PROYECTOS -->
     <section>
       <h2>Proyectos</h2>
+      
       <div class="tarjetas">
-        <article>
+        <article class="tarjeta-proyecto">
           <div class="contenido-tarjeta">
             <h3>Pipeline de Datos ETL</h3>
             <p>Ingesta y procesamiento masivo de datos con validaciones automatizadas.</p>
+            
+            <div class="detalles-extra">
+              <p><strong>Stack:</strong> Python, Apache Airflow, PostgreSQL.</p>
+              <p>Automatización de procesos nocturnos con reducción del 40% en tiempos de ejecución.</p>
+            </div>
           </div>
-          <a href="#" class="btn-proyecto">Ver detalles</a>
+          <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
         </article>
         
-        <article>
+        <article class="tarjeta-proyecto">
           <div class="contenido-tarjeta">
             <h3>Dashboard Web</h3>
             <p>Panel interactivo en tiempo real para visualización de métricas clave.</p>
+            
+            <div class="detalles-extra">
+              <p><strong>Stack:</strong> HTML5, CSS3, JavaScript, Chart.js.</p>
+              <p>Conexión directa con API RESTful para generación de reportes gerenciales gráficos.</p>
+            </div>
           </div>
-          <a href="#" class="btn-proyecto">Ver detalles</a>
-        </article>
-
-        <article>
-          <div class="contenido-tarjeta">
-            <h3>Aplicación Web Responsive</h3>
-            <p>Interfaz adaptable para usuarios construida con HTML5 y CSS3.</p>
-          </div>
-          <a href="#" class="btn-proyecto">Ver detalles</a>
+          <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
         </article>
       </div>
+
+      <!-- BOTÓN PARA DESPLEGAR MÁS PROYECTOS -->
+      <div style="text-align: center;">
+        <button id="ver-mas" type="button" aria-expanded="false" aria-controls="proyectos-extra">
+          <span class="texto-boton">Ver más proyectos</span>
+          <span class="icono">↓</span>
+        </button>
+      </div>
+
+      <!-- CONTENIDO DESPLEGABLE DE MÁS PROYECTOS -->
+      <div id="proyectos-extra" class="desplegable">
+        <div class="tarjetas">
+          <article class="tarjeta-proyecto">
+            <div class="contenido-tarjeta">
+              <h3>Aplicación Web Responsive</h3>
+              <p>Plataforma web construida con HTML, CSS y JavaScript siguiendo diseño adaptable.</p>
+              
+              <div class="detalles-extra">
+                <p><strong>Stack:</strong> Flexbox, CSS Grid, JS ES6.</p>
+                <p>Diseño centrado en la experiencia de usuario (UX) compatible con móviles y tabletas.</p>
+              </div>
+            </div>
+            <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
+          </article>
+
+          <article class="tarjeta-proyecto">
+            <div class="contenido-tarjeta">
+              <h3>API RESTful de Métricas</h3>
+              <p>Servicio web seguro en Node.js y MySQL para consumo en dashboards.</p>
+              
+              <div class="detalles-extra">
+                <p><strong>Stack:</strong> Node.js, Express, MySQL, JWT.</p>
+                <p>Implementación de autenticación segura y consultas optimizadas a la base de datos.</p>
+              </div>
+            </div>
+            <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
+          </article>
+        </div>
+      </div>
     </section>
+
   </main>
 
+  <!-- PIE DE PÁGINA -->
   <footer>
-    <p>2026 BEC</p>
+    <p>&copy; 2026 Carlos Bonilla. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="js/scripts.js"></script>
 </body>
 </html>

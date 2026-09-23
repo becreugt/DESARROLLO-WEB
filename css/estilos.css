@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+Cuba+Guides&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+Cuba+Guides&family=Montserrat:wght@600;700&family=Ubuntu:wght@400;500&display=swap');
 
 .clase-cursiva {
   font-family: 'Playwrite Cuba Guides', cursive !important;
@@ -6,7 +6,7 @@
 }
 
 /* =========================================
-   VARIABLES DE IDENTIDAD VISUAL (PALETA AZUL)
+   VARIABLES DE PALETA AZUL
    ========================================= */
 :root {
   --principal: #0d47a1; /* Azul oscuro */
@@ -14,8 +14,8 @@
   --fondo: #f4f7fa;     /* Blanco / Gris muy claro */
   --texto: #333333;     /* Texto oscuro */
 
-  --fuente-titulos: Arial, Helvetica, sans-serif;
-  --fuente-texto: Arial, Helvetica, sans-serif;
+  --fuente-titulos: 'Montserrat', Arial, sans-serif;
+  --fuente-texto: 'Ubuntu', Arial, sans-serif;
 }
 
 /* Aplicación general */
@@ -35,43 +35,25 @@ h1 {
   background-color: var(--principal);
   color: #ffffff;
   text-align: center;
-  padding: 20px 10px;
+  padding: 20px 10px 5px 10px;
   margin: 0;
   font-size: 2.2rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
-/* CENTRADO DE TODOS LOS SUBTÍTULOS (H2) EN TODAS LAS PÁGINAS */
-h2 {
-  color: var(--acento);
+.subtitulo-header {
+  background-color: var(--principal);
+  color: #ffffff;
   text-align: center;
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin: 0;
+  padding-bottom: 15px;
+  font-size: 1.2rem;
 }
 
-/* Detalle decorativo para los h2 que están dentro del contenido principal */
-main section h2 {
-  color: var(--principal);
-  font-size: 1.6rem;
-  text-align: center;
-  position: relative;
-  padding-bottom: 8px;
-}
-
-main section h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background-color: var(--acento);
-  margin: 8px auto 0 auto;
-  border-radius: 2px;
-}
-
-/* NAVEGACIÓN FLEXBOX */
+/* BARRA DE NAVEGACIÓN EN ENCABEZADO */
 header {
-  background-color: var(--acento);
+  background-color: #1967d2;
   padding: 12px 0;
 }
 
@@ -82,27 +64,41 @@ header nav {
   gap: 15px;
 }
 
-header nav a,
-button,
-.btn-primario {
-  background-color: #1565c0;
+header nav a {
+  background-color: #1557b0;
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 8px 18px;
+  font-size: 0.9rem;
+  padding: 8px 24px;
   border-radius: 20px;
-  transition: all 0.3s ease;
-  display: inline-block;
-  border: 1px solid transparent;
+  transition: background-color 0.3s ease;
 }
 
 header nav a:hover,
-button:hover,
-.btn-primario:hover {
-  background-color: var(--principal);
-  color: #ffffff;
-  transform: translateY(-2px);
+header nav a.activo {
+  background-color: #0d47a1;
+}
+
+/* CENTRADO DE SUBTÍTULOS (H2) */
+h2 {
+  color: var(--principal);
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--acento);
+  margin: 8px auto 0 auto;
+  border-radius: 2px;
 }
 
 /* ESTRUCTURA CONTENEDOR PRINCIPAL */
@@ -120,12 +116,42 @@ section {
   margin-bottom: 20px;
 }
 
-/* GRID EN 2 COLUMNAS (PANTALLAS GRANDES) */
+.btn-primario {
+  background-color: #1565c0;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.btn-primario:hover {
+  background-color: var(--principal);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* EFECTO HOVER DE AMPLIACIÓN PARA SECCIONES */
+.tarjeta-efecto {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-efecto:hover {
+  transform: translateY(-5px) scale(1.015);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* GRID EN 2 COLUMNAS CON ALINEACIÓN INDEPENDIENTE */
 @media (min-width: 768px) {
   .grid-dos-columnas {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    align-items: start;
   }
 }
 
@@ -224,18 +250,20 @@ table td {
   height: 100%;
   background-color: var(--acento);
   border-radius: 8px;
+  transition: width 1s ease-in-out;
 }
 
 .html-css { width: 85%; }
 .datos { width: 70%; }
 .js { width: 50%; }
 
-/* TARJETAS DE PROYECTOS */
+/* TARJETAS DE PROYECTOS (ALINEADAS ARRIBA PARA EXPANSIÓN INDEPENDIENTE) */
 .tarjetas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  align-items: start;
 }
 
 .tarjetas article {
@@ -267,21 +295,38 @@ table td {
   margin: 0 0 15px 0;
 }
 
+/* BOTÓN VER DETALLES */
 .btn-proyecto {
   display: inline-block;
-  text-decoration: none;
   background-color: var(--acento);
   color: #ffffff;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 10px 14px;
+  border-radius: 6px;
   font-size: 0.85rem;
   font-weight: bold;
   text-align: center;
-  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
 }
 
 .btn-proyecto:hover {
   background-color: var(--principal);
+}
+
+/* DETALLES OCULTOS DE TARJETAS DE PROYECTO */
+.detalles-extra {
+  display: none;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--acento);
+  font-size: 0.88rem;
+  color: var(--texto);
+}
+
+.detalles-extra.activo {
+  display: block;
 }
 
 /* FOOTER */
@@ -296,4 +341,48 @@ footer {
 footer p {
   margin: 0;
   font-size: 14px;
+}
+
+/* BOTÓN Y SECCIÓN DESPLEGABLE DE MÁS PROYECTOS */
+#ver-mas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px auto 10px auto;
+  padding: 10px 22px;
+  background-color: var(--acento);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#ver-mas:hover {
+  background-color: var(--principal);
+  transform: translateY(-2px);
+}
+
+#ver-mas .icono {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+#ver-mas[aria-expanded="true"] .icono {
+  transform: rotate(180deg);
+}
+
+.desplegable {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.desplegable.activo {
+  display: block !important;
+  opacity: 1;
+  margin-top: 15px;
 }
