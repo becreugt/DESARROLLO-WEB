@@ -38,4 +38,62 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // 3. EFECTO TIPO MECANOGRAFÍA (TYPEWRITER)
+  const elementoTexto = document.getElementById("texto-tipeado");
+  if (elementoTexto) {
+    const frases = [
+      "Bienvenido a mi espacio personal.",
+      "Especialista en Ingeniería de Datos.",
+      "Desarrollador Web en formación.",
+      "Transformo datos masivos en soluciones digitales."
+    ];
+    let fraseIndex = 0;
+    let charIndex = 0;
+    let borrando = false;
+
+    function tipear() {
+      const fraseActual = frases[fraseIndex];
+
+      if (borrando) {
+        elementoTexto.textContent = fraseActual.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        elementoTexto.textContent = fraseActual.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let velocidad = borrando ? 35 : 70;
+
+      if (!borrando && charIndex === fraseActual.length) {
+        velocidad = 2200; // Pausa con la frase completa
+        borrando = true;
+      } else if (borrando && charIndex === 0) {
+        borrando = false;
+        fraseIndex = (fraseIndex + 1) % frases.length;
+        velocidad = 400;
+      }
+
+      setTimeout(tipear, velocidad);
+    }
+
+    tipear();
+  }
 });
+
+// 4. FUNCIONES DE VENTANA MODAL (SERVICIOS)
+function abrirModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.classList.add("activo");
+}
+
+function cerrarModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.classList.remove("activo");
+}
+
+function cerrarModalAfuera(event, id) {
+  if (event.target.classList.contains("modal-overlay")) {
+    cerrarModal(id);
+  }
+}

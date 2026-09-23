@@ -13,49 +13,55 @@
 <body>
 
   <h1>PAGINA DE CARLOS BONILLA</h1>
-  <h2>CURSO DESARROLLO WEB</h2>
+  <p class="subtitulo-header clase-cursiva">CURSO DESARROLLO WEB</p>
 
   <header>
     <nav>
-      <a href="index.html">INICIO</a>
+      <a href="index.html" class="activo">INICIO</a>
       <a href="CONTACTOS.HTML">CONTACTO</a>
       <a href="PERFIL.HTML">PERFIL</a>
     </nav>
   </header>
 
   <main>
-    <!-- 1. SECCIÓN DE BIENVENIDA -->
-    <section>
+    <!-- 1. SECCIÓN DE BIENVENIDA CON EFECTO TIPO MECANOGRAFÍA -->
+    <section class="tarjeta-bienvenida">
       <h2>¡Bienvenido a mi sitio web!</h2>
-      <p style="font-size: 1.05rem; line-height: 1.6; text-align: center;">
-        Hola, soy <strong>Carlos Bonilla</strong>. Bienvenido a mi espacio personal del curso de Desarrollo Web. Aquí encontrarás información sobre mis servicios, experiencia profesional en ingeniería de datos y proyectos actuales.
+      <p class="parrafo-bienvenida">
+        Hola, soy <strong>Carlos Bonilla</strong>. <span id="texto-tipeado"></span><span class="cursor-typewriter">|</span>
       </p>
     </section>
 
-    <!-- 2. SECCIÓN DE SERVICIOS -->
-    <section style="margin-top: 30px;">
+    <!-- 2. SECCIÓN DE SERVICIOS INTERACTIVOS -->
+    <section class="seccion-servicios">
       <h2>Servicios Profesionales</h2>
-      <p style="text-align: center;">Soluciones integrales de datos y desarrollo para impulsar proyectos digitales.</p>
+      <p class="subtitulo-seccion">Soluciones integrales de datos y desarrollo para impulsar proyectos digitales.</p>
 
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 25px; text-align: left;">
+      <div class="grid-servicios">
         
         <!-- Servicio 1 -->
-        <div style="flex: 1; min-width: 200px; padding: 15px; border: 1px solid #bbdefb; border-radius: 6px; background-color: #f4f7fa;">
-          <h3 style="color: #0d47a1; margin-top: 0;">📊 Ingeniería de Datos</h3>
-          <p style="text-align: left; font-size: 0.9rem;">Diseño y optimización de bases de datos, flujos ETL y procesamiento masivo de información.</p>
-        </div>
+        <article class="tarjeta-servicio" onclick="abrirModal('modal-datos')">
+          <div class="icono-servicio">📊</div>
+          <h3>Ingeniería de Datos</h3>
+          <p>Diseño y optimización de bases de datos, flujos ETL y procesamiento masivo de información.</p>
+          <span class="btn-ver-detalle">Saber más &rarr;</span>
+        </article>
 
         <!-- Servicio 2 -->
-        <div style="flex: 1; min-width: 200px; padding: 15px; border: 1px solid #bbdefb; border-radius: 6px; background-color: #f4f7fa;">
-          <h3 style="color: #0d47a1; margin-top: 0;">💻 Desarrollo Web</h3>
-          <p style="text-align: left; font-size: 0.9rem;">Creación de sitios y aplicaciones web modernas, rápidas y adaptadas a cualquier dispositivo.</p>
-        </div>
+        <article class="tarjeta-servicio" onclick="abrirModal('modal-web')">
+          <div class="icono-servicio">💻</div>
+          <h3>Desarrollo Web</h3>
+          <p>Creación de sitios y aplicaciones web modernas, rápidas y adaptadas a cualquier dispositivo.</p>
+          <span class="btn-ver-detalle">Saber más &rarr;</span>
+        </article>
 
         <!-- Servicio 3 -->
-        <div style="flex: 1; min-width: 200px; padding: 15px; border: 1px solid #bbdefb; border-radius: 6px; background-color: #f4f7fa;">
-          <h3 style="color: #0d47a1; margin-top: 0;">📈 Analytics & Dashboards</h3>
-          <p style="text-align: left; font-size: 0.9rem;">Visualización de métricas clave para facilitar la toma de decisiones basadas en datos.</p>
-        </div>
+        <article class="tarjeta-servicio" onclick="abrirModal('modal-analytics')">
+          <div class="icono-servicio">📈</div>
+          <h3>Analytics & Dashboards</h3>
+          <p>Visualización de métricas clave para facilitar la toma de decisiones basadas en datos.</p>
+          <span class="btn-ver-detalle">Saber más &rarr;</span>
+        </article>
 
       </div>
     </section>
@@ -79,15 +85,66 @@
 
       <!-- Botón de llamado a la acción -->
       <div style="text-align: center; margin-top: 30px;">
-        <a href="CONTACTOS.HTML" style="background-color: #1976d2; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block;">¿Tienes alguna consulta? Contáctame</a>
+        <a href="CONTACTOS.HTML" class="btn-primario">¿Tienes alguna consulta? Contáctame</a>
       </div>
     </section>
   </main>
 
+  <!-- MODALES INFORMATIVOS (VENTANAS EMERGENTES) -->
+  <div id="modal-datos" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-datos')">
+    <div class="modal-contenido">
+      <button class="modal-cerrar" onclick="cerrarModal('modal-datos')">&times;</button>
+      <div class="modal-header">
+        <span class="modal-icono">📊</span>
+        <h3>Ingeniería de Datos</h3>
+      </div>
+      <p class="modal-sub">Arquitectura de Datos & Pipelines ETL</p>
+      <ul>
+        <li><strong>Modelado de Datos:</strong> Diseño relacional y no relacional (SQL / NoSQL).</li>
+        <li><strong>Pipelines Automáticos:</strong> Automatización e ingesta continua con Python.</li>
+        <li><strong>Limpieza y Calidad:</strong> Transformación y normalización de información técnica.</li>
+        <li><strong>Optimización:</strong> Creación de índices y reducción de tiempos de consulta.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-web" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-web')">
+    <div class="modal-contenido">
+      <button class="modal-cerrar" onclick="cerrarModal('modal-web')">&times;</button>
+      <div class="modal-header">
+        <span class="modal-icono">💻</span>
+        <h3>Desarrollo Web</h3>
+      </div>
+      <p class="modal-sub">Sistemas Web Modernos & Responsive</p>
+      <ul>
+        <li><strong>Frontend Adaptativo:</strong> Maquetación semántica estructurada con HTML5/CSS3.</li>
+        <li><strong>Interactividad Dinámica:</strong> Integración con JavaScript ES6+.</li>
+        <li><strong>Conexión API:</strong> Consumo de endpoints y servicios backend.</li>
+        <li><strong>Rendimiento:</strong> Sitios web optimizados con altos estándares de UX/UI.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-analytics" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-analytics')">
+    <div class="modal-contenido">
+      <button class="modal-cerrar" onclick="cerrarModal('modal-analytics')">&times;</button>
+      <div class="modal-header">
+        <span class="modal-icono">📈</span>
+        <h3>Analytics & Dashboards</h3>
+      </div>
+      <p class="modal-sub">Inteligencia de Negocios & Visualización</p>
+      <ul>
+        <li><strong>Dashboards Interactivos:</strong> Visualización de métricas en tiempo real.</li>
+        <li><strong>Librerías Gráficas:</strong> Implementaciones con Chart.js y componentes dinámicos.</li>
+        <li><strong>Indicadores Clave:</strong> Medición precisa alineada con objetivos del proyecto.</li>
+        <li><strong>Reportes Estratégicos:</strong> Transformación de datos crudos en decisiones de negocio.</li>
+      </ul>
+    </div>
+  </div>
+
   <footer>
-    <p>2026 BEC</p>
+    <p>&copy; 2026 Carlos Bonilla. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="js/scripts.js"></script>
 </body>
 </html>
