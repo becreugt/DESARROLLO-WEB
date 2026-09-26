@@ -135,7 +135,7 @@ section {
   transform: translateY(-2px);
 }
 
-/* EFECTO HOVER DE AMPLIACIÓN PARA SECCIONES */
+/* EFECTO HOVER PARA SECCIONES */
 .tarjeta-efecto {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -145,7 +145,7 @@ section {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* GRID EN 2 COLUMNAS CON ALINEACIÓN INDEPENDIENTE */
+/* GRID EN 2 COLUMNAS */
 @media (min-width: 768px) {
   .grid-dos-columnas {
     display: grid;
@@ -257,7 +257,7 @@ table td {
 .datos { width: 70%; }
 .js { width: 50%; }
 
-/* TARJETAS DE PROYECTOS (ALINEADAS ARRIBA PARA EXPANSIÓN INDEPENDIENTE) */
+/* TARJETAS DE PROYECTOS */
 .tarjetas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -386,19 +386,23 @@ footer p {
   opacity: 1;
   margin-top: 15px;
 }
+
 /* =========================================
    ESTILOS PARA EL FORMULARIO DE CONTACTO
    ========================================= */
 
-/* Hace que los campos ocupen el 100% del contenedor */
+.campo-grupo {
+  margin-bottom: 15px;
+}
+
 form input[type="text"],
 form input[type="email"],
+form input[type="number"],
 form textarea {
   width: 100%;
-  box-sizing: border-box; /* Incluye padding en el ancho total */
+  box-sizing: border-box;
   padding: 10px 14px;
   margin-top: 5px;
-  margin-bottom: 18px;
   border: 1px solid #cccccc;
   border-radius: 6px;
   font-family: var(--fuente-texto);
@@ -406,35 +410,31 @@ form textarea {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto al hacer clic o escribir dentro del campo */
 form input[type="text"]:focus,
 form input[type="email"]:focus,
+form input[type="number"]:focus,
 form textarea:focus {
   border-color: var(--acento);
   outline: none;
   box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
 }
 
-/* Permitir redimensionar solo verticalmente el área de texto */
 form textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-/* Estilo para los labels del formulario */
 form label {
   font-weight: bold;
   color: var(--principal);
   display: block;
 }
 
-/* Estilo para el botón Enviar del formulario */
-form button[type="submit"],
-form input[type="submit"] {
+.btn-enviar {
   background-color: var(--acento);
   color: #ffffff;
   border: none;
-  padding: 10px 24px;
+  padding: 12px 28px;
   border-radius: 20px;
   font-weight: bold;
   font-size: 0.95rem;
@@ -442,13 +442,40 @@ form input[type="submit"] {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-form button[type="submit"]:hover,
-form input[type="submit"]:hover {
+.btn-enviar:hover {
   background-color: var(--principal);
   transform: translateY(-2px);
 }
+
+.error {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin: 4px 0 0 0;
+  min-height: 18px;
+}
+
+.campo-invalido {
+  border-color: #d32f2f !important;
+  background-color: #ffebee;
+}
+
+.exito {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.oculto {
+  display: none;
+}
+
 /* =========================================
-   ESTILOS DINÁMICOS Y ANIMACIONES DE SERVICIOS
+   EFECTO MÁQUINA DE ESCRIBIR (TYPEWRITER)
    ========================================= */
 
 .parrafo-bienvenida {
@@ -458,17 +485,16 @@ form input[type="submit"]:hover {
   min-height: 48px;
 }
 
-.subtitulo-seccion {
-  text-align: center;
-  color: #555555;
-  margin-top: -10px;
-  margin-bottom: 25px;
+#texto-tipeado {
+  display: inline;
+  color: var(--texto);
 }
 
-/* Cursor parpadeante del Typewriter */
 .cursor-typewriter {
   font-weight: bold;
   color: var(--acento);
+  display: inline-block;
+  margin-left: 2px;
   animation: parpadeo 0.8s infinite;
 }
 
@@ -477,7 +503,7 @@ form input[type="submit"]:hover {
   50% { opacity: 0; }
 }
 
-/* Grid y tarjetas interactiva de servicios */
+/* GRID Y TARJETAS DE SERVICIOS */
 .grid-servicios {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -499,7 +525,6 @@ form input[type="submit"]:hover {
   justify-content: space-between;
 }
 
-/* Borde superior decorativo en Hover */
 .tarjeta-servicio::before {
   content: "";
   position: absolute;

@@ -79,9 +79,122 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tipear();
   }
+
+  // 4. VALIDACIÓN DEL FORMULARIO DE CONTACTO EN TIEMPO REAL
+  const formulario = document.querySelector("#contacto");
+
+  if (formulario) {
+      const nombre = document.querySelector("#nombre");
+      const correo = document.querySelector("#correo");
+      const mensaje = document.querySelector("#mensaje");
+      const captchaMath = document.querySelector("#captcha-math");
+
+      const errorNombre = document.querySelector("#error-nombre");
+      const errorCorreo = document.querySelector("#error-correo");
+      const errorMensaje = document.querySelector("#error-mensaje");
+      const errorCaptcha = document.querySelector("#error-captcha");
+
+      const exito = document.querySelector("#mensaje-exito");
+
+      // Marca o limpia un campo y escribe su mensaje de error
+      function marcar(campo, parrafo, texto) {
+          parrafo.textContent = texto;
+          if (texto === "") {
+              campo.classList.remove("campo-invalido");
+          } else {
+              campo.classList.add("campo-invalido");
+          }
+      }
+
+      // Funciones individuales de validación
+      function validarNombre() {
+          if (nombre.value.trim().length < 3) {
+              marcar(nombre, errorNombre, "Escriba su nombre completo");
+              return false;
+          } else {
+              marcar(nombre, errorNombre, "");
+              return true;
+          }
+      }
+
+      function validarCorreo() {
+          const posArroba = correo.value.indexOf("@");
+          if (correo.value.trim() === "") {
+              marcar(correo, errorCorreo, "Escriba su correo");
+              return false;
+          } else if (posArroba === -1) {
+              marcar(correo, errorCorreo, "Al correo le falta la arroba (@)");
+              return false;
+          } else if (correo.value.indexOf(".", posArroba) === -1) {
+              marcar(correo, errorCorreo, "Al correo le falta el punto después de la arroba");
+              return false;
+          } else {
+              marcar(correo, errorCorreo, "");
+              return true;
+          }
+      }
+
+      function validarMensaje() {
+          if (mensaje.value.trim().length < 10) {
+              marcar(mensaje, errorMensaje, "Escriba un mensaje de al menos 10 letras");
+              return false;
+          } else {
+              marcar(mensaje, errorMensaje, "");
+              return true;
+          }
+      }
+
+      function validarCaptcha() {
+          if (parseInt(captchaMath.value) !== 7) {
+              marcar(captchaMath, errorCaptcha, "Respuesta incorrecta. Confirma que eres humano.");
+              return false;
+          } else {
+              marcar(captchaMath, errorCaptcha, "");
+              return true;
+          }
+      }
+
+      // VALIDACIÓN EN TIEMPO REAL
+      nombre.addEventListener("input", validarNombre);
+      correo.addEventListener("input", validarCorreo);
+      mensaje.addEventListener("input", validarMensaje);
+      captchaMath.addEventListener("input", validarCaptcha);
+
+      // Muestra el mensaje de éxito
+      function mostrarExito(texto) {
+          if (exito) {
+              exito.textContent = texto;
+              exito.classList.remove("oculto");
+          }
+      }
+
+      // Esconde el mensaje de éxito
+      function ocultarExito() {
+          if (exito) {
+              exito.textContent = "";
+              exito.classList.add("oculto");
+          }
+      }
+
+      // Evento de envío del formulario
+      formulario.addEventListener("submit", function (evento) {
+          evento.preventDefault();
+          ocultarExito();
+
+          const esNombreValido = validarNombre();
+          const esCorreoValido = validarCorreo();
+          const esMensajeValido = validarMensaje();
+          const esCaptchaValido = validarCaptcha();
+
+          if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
+              formulario.reset();
+              mostrarExito("Datos completos. Escribame directo a edoncut@hotmail.com mientras conecto el envio.");
+          }
+      });
+  }
 });
 
-// 4. FUNCIONES DE VENTANA MODAL (SERVICIOS)
+// 5. FUNCIONES DE VENTANA MODAL (SERVICIOS)
 function abrirModal(id) {
   const modal = document.getElementById(id);
   if (modal) modal.classList.add("activo");
