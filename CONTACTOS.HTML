@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PAGINA DESARROLLO WEB</title>
     <meta name="description" content="Contacto de Carlos Bonilla">
+
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
@@ -17,7 +19,7 @@
     <header>
         <nav>
             <a href="index.html">INICIO</a>
-            <a href="CONTACTOS.HTML">CONTACTO</a>
+            <a href="CONTACTOS.HTML" class="activo">CONTACTO</a>
             <a href="PERFIL.HTML">PERFIL</a>
         </nav>
     </header>
@@ -62,8 +64,20 @@
                 </div>
             </form>
         </section>
-    </main>
+ 
+           <!-- MODAL EMERGENTE DE ÉXITO -->
+<div id="modal-exito" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-exito')">
+  <div class="modal-contenido modal-exito-box">
+    <button type="button" class="btn-cerrar-modal" onclick="cerrarModal('modal-exito')">&times;</button>
     
+    <div class="alerta-exito-estilo">
+      <div id="texto-exito-animado" class="contenedor-palabras"></div>
+    </div>
+  </div>
+</div>
+ 
+    </main>
+       
     <footer>
         <p>2026 BEC</p>
     </footer>

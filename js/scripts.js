@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Funcionalidad de "Ver detalles" / "Ocultar detalles" en las tarjetas
+  // 1. FUNCIONALIDAD "VER DETALLES" EN TARJETAS DE PROYECTOS
   const botonesDetalles = document.querySelectorAll(".btn-detalles");
 
   botonesDetalles.forEach((boton) => {
@@ -9,17 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (detalles) {
         detalles.classList.toggle("activo");
-
-        if (detalles.classList.contains("activo")) {
-          boton.textContent = "Ocultar detalles";
-        } else {
-          boton.textContent = "Ver detalles";
-        }
+        boton.textContent = detalles.classList.contains("activo") ? "Ocultar detalles" : "Ver detalles";
       }
     });
   });
 
-  // 2. Funcionalidad de "Ver más proyectos" / "Ocultar proyectos"
+  // 2. FUNCIONALIDAD "VER MÁS PROYECTOS"
   const btnVerMas = document.getElementById("ver-mas");
   const contenedorExtra = document.getElementById("proyectos-extra");
 
@@ -28,18 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnVerMas.addEventListener("click", () => {
       const estaActivo = contenedorExtra.classList.toggle("activo");
-
       btnVerMas.setAttribute("aria-expanded", estaActivo);
 
-      if (estaActivo) {
-        if (textoBoton) textoBoton.textContent = "Ocultar proyectos";
-      } else {
-        if (textoBoton) textoBoton.textContent = "Ver más proyectos";
+      if (textoBoton) {
+        textoBoton.textContent = estaActivo ? "Ocultar proyectos" : "Ver más proyectos";
       }
     });
   }
 
-  // 3. EFECTO TIPO MECANOGRAFÍA (TYPEWRITER)
+  // 3. EFECTO MECANOGRAFÍA (TYPEWRITER)
   const elementoTexto = document.getElementById("texto-tipeado");
   if (elementoTexto) {
     const frases = [
@@ -66,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let velocidad = borrando ? 35 : 70;
 
       if (!borrando && charIndex === fraseActual.length) {
-        velocidad = 2200; // Pausa con la frase completa
+        velocidad = 2200;
         borrando = true;
       } else if (borrando && charIndex === 0) {
         borrando = false;
@@ -80,121 +72,153 @@ document.addEventListener("DOMContentLoaded", () => {
     tipear();
   }
 
-  // 4. VALIDACIÓN DEL FORMULARIO DE CONTACTO EN TIEMPO REAL
+  // 4. VALIDACIÓN RIGUROSA Y ENVÍO CON FORMULARIO DE CONTACTO
   const formulario = document.querySelector("#contacto");
 
   if (formulario) {
-      const nombre = document.querySelector("#nombre");
-      const correo = document.querySelector("#correo");
-      const mensaje = document.querySelector("#mensaje");
-      const captchaMath = document.querySelector("#captcha-math");
+    const nombre = document.querySelector("#nombre");
+    const correo = document.querySelector("#correo");
+    const mensaje = document.querySelector("#mensaje");
+    const captchaMath = document.querySelector("#captcha-math");
 
-      const errorNombre = document.querySelector("#error-nombre");
-      const errorCorreo = document.querySelector("#error-correo");
-      const errorMensaje = document.querySelector("#error-mensaje");
-      const errorCaptcha = document.querySelector("#error-captcha");
+    const errorNombre = document.querySelector("#error-nombre");
+    const errorCorreo = document.querySelector("#error-correo");
+    const errorMensaje = document.querySelector("#error-mensaje");
+    const errorCaptcha = document.querySelector("#error-captcha");
 
-      const exito = document.querySelector("#mensaje-exito");
-
-      // Marca o limpia un campo y escribe su mensaje de error
-      function marcar(campo, parrafo, texto) {
-          parrafo.textContent = texto;
-          if (texto === "") {
-              campo.classList.remove("campo-invalido");
-          } else {
-              campo.classList.add("campo-invalido");
-          }
+    function marcar(campo, parrafo, texto) {
+      if (parrafo) parrafo.textContent = texto;
+      if (campo) {
+        if (texto === "") {
+          campo.classList.remove("campo-invalido");
+        } else {
+          campo.classList.add("campo-invalido");
+        }
       }
+    }
 
-      // Funciones individuales de validación
-      function validarNombre() {
-          if (nombre.value.trim().length < 3) {
-              marcar(nombre, errorNombre, "Escriba su nombre completo");
-              return false;
-          } else {
-              marcar(nombre, errorNombre, "");
-              return true;
-          }
+    function esTextoRepetitivo(texto) {
+      const limpio = texto.replace(/\s+/g, "");
+      if (limpio.length === 0) return true;
+      return /^([a-zA-Z0-9])\1+$/.test(limpio);
+    }
+
+    function validarNombre() {
+      if (!nombre) return false;
+      const valor = nombre.value.trim();
+      const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+(\s+[a-zA-ZáéíóúÁÉÍÓÚñÑ]+)+$/;
+
+      if (valor === "") {
+        marcar(nombre, errorNombre, "Escriba su nombre completo");
+        return false;
+      } else if (esTextoRepetitivo(valor)) {
+        marcar(nombre, errorNombre, "Ingrese un nombre válido, no letras repetidas");
+        return false;
+      } else if (!regexNombre.test(valor)) {
+        marcar(nombre, errorNombre, "Ingrese nombre y apellido (solo letras)");
+        return false;
+      } else {
+        marcar(nombre, errorNombre, "");
+        return true;
       }
+    }
 
-      function validarCorreo() {
-          const posArroba = correo.value.indexOf("@");
-          if (correo.value.trim() === "") {
-              marcar(correo, errorCorreo, "Escriba su correo");
-              return false;
-          } else if (posArroba === -1) {
-              marcar(correo, errorCorreo, "Al correo le falta la arroba (@)");
-              return false;
-          } else if (correo.value.indexOf(".", posArroba) === -1) {
-              marcar(correo, errorCorreo, "Al correo le falta el punto después de la arroba");
-              return false;
-          } else {
-              marcar(correo, errorCorreo, "");
-              return true;
-          }
+    function validarCorreo() {
+      if (!correo) return false;
+      const valor = correo.value.trim();
+      const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      if (valor === "") {
+        marcar(correo, errorCorreo, "Escriba su correo electrónico");
+        return false;
+      } else if (!regexCorreo.test(valor)) {
+        marcar(correo, errorCorreo, "Ingrese un correo válido (ejemplo: usuario@dominio.com)");
+        return false;
+      } else {
+        marcar(correo, errorCorreo, "");
+        return true;
       }
+    }
 
-      function validarMensaje() {
-          if (mensaje.value.trim().length < 10) {
-              marcar(mensaje, errorMensaje, "Escriba un mensaje de al menos 10 letras");
-              return false;
-          } else {
-              marcar(mensaje, errorMensaje, "");
-              return true;
-          }
+    function validarMensaje() {
+      if (!mensaje) return false;
+      const valor = mensaje.value.trim();
+      const palabras = valor.split(/\s+/).filter((p) => p.length > 0);
+
+      if (valor === "") {
+        marcar(mensaje, errorMensaje, "Escriba su mensaje");
+        return false;
+      } else if (esTextoRepetitivo(valor)) {
+        marcar(mensaje, errorMensaje, "El mensaje no puede ser texto repetitivo");
+        return false;
+      } else if (valor.length < 15 || palabras.length < 3) {
+        marcar(mensaje, errorMensaje, "El mensaje debe tener al menos 15 caracteres y 3 palabras");
+        return false;
+      } else {
+        marcar(mensaje, errorMensaje, "");
+        return true;
       }
+    }
 
-      function validarCaptcha() {
-          if (parseInt(captchaMath.value) !== 7) {
-              marcar(captchaMath, errorCaptcha, "Respuesta incorrecta. Confirma que eres humano.");
-              return false;
-          } else {
-              marcar(captchaMath, errorCaptcha, "");
-              return true;
-          }
+    function validarCaptcha() {
+      if (!captchaMath || parseInt(captchaMath.value) !== 7) {
+        marcar(captchaMath, errorCaptcha, "Respuesta incorrecta. Confirma que eres humano.");
+        return false;
+      } else {
+        marcar(captchaMath, errorCaptcha, "");
+        return true;
       }
+    }
 
-      // VALIDACIÓN EN TIEMPO REAL
-      nombre.addEventListener("input", validarNombre);
-      correo.addEventListener("input", validarCorreo);
-      mensaje.addEventListener("input", validarMensaje);
-      captchaMath.addEventListener("input", validarCaptcha);
+    if (nombre) nombre.addEventListener("input", validarNombre);
+    if (correo) correo.addEventListener("input", validarCorreo);
+    if (mensaje) mensaje.addEventListener("input", validarMensaje);
+    if (captchaMath) captchaMath.addEventListener("input", validarCaptcha);
 
-      // Muestra el mensaje de éxito
-      function mostrarExito(texto) {
-          if (exito) {
-              exito.textContent = texto;
-              exito.classList.remove("oculto");
-          }
-      }
+    // Evento Submit con respuesta por Modal Animado
+    formulario.addEventListener("submit", function (evento) {
+      evento.preventDefault();
 
-      // Esconde el mensaje de éxito
-      function ocultarExito() {
-          if (exito) {
-              exito.textContent = "";
-              exito.classList.add("oculto");
-          }
-      }
+      const esNombreValido = validarNombre();
+      const esCorreoValido = validarCorreo();
+      const esMensajeValido = validarMensaje();
+      const esCaptchaValido = validarCaptcha();
 
-      // Evento de envío del formulario
-      formulario.addEventListener("submit", function (evento) {
-          evento.preventDefault();
-          ocultarExito();
-
-          const esNombreValido = validarNombre();
-          const esCorreoValido = validarCorreo();
-          const esMensajeValido = validarMensaje();
-          const esCaptchaValido = validarCaptcha();
-
-          if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
+      if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
+        fetch("https://formsubmit.co/ajax/edoncut@hotmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            nombre: nombre.value,
+            correo: correo.value,
+            mensaje: mensaje.value,
+            _captcha: "false"
+          })
+        })
+          .then(function (respuesta) {
+            if (respuesta.ok) {
               formulario.reset();
-              mostrarExito("Datos completos. Escribame directo a edoncut@hotmail.com mientras conecto el envio.");
-          }
-      });
+              animarTextoExito("¡Mensaje enviado con éxito! Te responderé pronto.");
+              abrirModal("modal-exito");
+            } else {
+              throw new Error("Error en servidor");
+            }
+          })
+          .catch(function () {
+            animarTextoExito("Ocurrió un error al enviar. Por favor intenta más tarde.");
+            abrirModal("modal-exito");
+          });
+      }
+    });
   }
 });
 
-// 5. FUNCIONES DE VENTANA MODAL (SERVICIOS)
+/* =========================================================
+   5. FUNCIONES PARA MANEJO DE VENTANAS MODALES
+   ========================================================= */
 function abrirModal(id) {
   const modal = document.getElementById(id);
   if (modal) modal.classList.add("activo");
@@ -209,4 +233,21 @@ function cerrarModalAfuera(event, id) {
   if (event.target.classList.contains("modal-overlay")) {
     cerrarModal(id);
   }
+}
+
+/* ANIMACIÓN PALABRA POR PALABRA EN EL MODAL */
+function animarTextoExito(mensaje) {
+  const contenedor = document.getElementById("texto-exito-animado");
+  if (!contenedor) return;
+
+  contenedor.innerHTML = "";
+  const palabras = mensaje.split(" ");
+
+  palabras.forEach((palabra, i) => {
+    const span = document.createElement("span");
+    span.textContent = palabra;
+    span.classList.add("palabra-animada");
+    span.style.animationDelay = `${i * 0.12}s`;
+    contenedor.appendChild(span);
+  });
 }
