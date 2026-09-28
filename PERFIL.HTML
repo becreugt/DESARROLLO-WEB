@@ -122,37 +122,12 @@
       </section>
     </div>
 
-    <!-- SECCIÓN PROYECTOS -->
+    <!-- SECCIÓN PROYECTOS (CARGADOS DINÁMICAMENTE DESDE JSON) -->
     <section>
       <h2>Proyectos</h2>
       
-      <div class="tarjetas">
-        <article class="tarjeta-proyecto">
-          <div class="contenido-tarjeta">
-            <h3>Pipeline de Datos ETL</h3>
-            <p>Ingesta y procesamiento masivo de datos con validaciones automatizadas.</p>
-            
-            <div class="detalles-extra">
-              <p><strong>Stack:</strong> Python, Apache Airflow, PostgreSQL.</p>
-              <p>Automatización de procesos nocturnos con reducción del 40% en tiempos de ejecución.</p>
-            </div>
-          </div>
-          <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
-        </article>
-        
-        <article class="tarjeta-proyecto">
-          <div class="contenido-tarjeta">
-            <h3>Dashboard Web</h3>
-            <p>Panel interactivo en tiempo real para visualización de métricas clave.</p>
-            
-            <div class="detalles-extra">
-              <p><strong>Stack:</strong> HTML5, CSS3, JavaScript, Chart.js.</p>
-              <p>Conexión directa con API RESTful para generación de reportes gerenciales gráficos.</p>
-            </div>
-          </div>
-          <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
-        </article>
-      </div>
+      <!-- Contenedor para proyectos principales -->
+      <div id="contenedor-proyectos-principales" class="tarjetas"></div>
 
       <!-- BOTÓN PARA DESPLEGAR MÁS PROYECTOS -->
       <div style="text-align: center;">
@@ -164,33 +139,7 @@
 
       <!-- CONTENIDO DESPLEGABLE DE MÁS PROYECTOS -->
       <div id="proyectos-extra" class="desplegable">
-        <div class="tarjetas">
-          <article class="tarjeta-proyecto">
-            <div class="contenido-tarjeta">
-              <h3>Aplicación Web Responsive</h3>
-              <p>Plataforma web construida con HTML, CSS y JavaScript siguiendo diseño adaptable.</p>
-              
-              <div class="detalles-extra">
-                <p><strong>Stack:</strong> Flexbox, CSS Grid, JS ES6.</p>
-                <p>Diseño centrado en la experiencia de usuario (UX) compatible con móviles y tabletas.</p>
-              </div>
-            </div>
-            <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
-          </article>
-
-          <article class="tarjeta-proyecto">
-            <div class="contenido-tarjeta">
-              <h3>API RESTful de Métricas</h3>
-              <p>Servicio web seguro en Node.js y MySQL para consumo en dashboards.</p>
-              
-              <div class="detalles-extra">
-                <p><strong>Stack:</strong> Node.js, Express, MySQL, JWT.</p>
-                <p>Implementación de autenticación segura y consultas optimizadas a la base de datos.</p>
-              </div>
-            </div>
-            <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
-          </article>
-        </div>
+        <div id="contenedor-proyectos-extra" class="tarjetas"></div>
       </div>
     </section>
 

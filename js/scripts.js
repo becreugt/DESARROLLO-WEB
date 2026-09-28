@@ -1,9 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. FUNCIONALIDAD "VER DETALLES" EN TARJETAS DE PROYECTOS
-  const botonesDetalles = document.querySelectorAll(".btn-detalles");
+  // 1. CARGA DINÁMICA DE PROYECTOS DESDE EL ARCHIVO PROYECTOS.JSON
+  const contenedorPrincipales = document.getElementById("contenedor-proyectos-principales");
+  const contenedorExtra = document.getElementById("contenedor-proyectos-extra");
 
-  botonesDetalles.forEach((boton) => {
-    boton.addEventListener("click", () => {
+  if (contenedorPrincipales && contenedorExtra) {
+    fetch("proyectos.json")
+      .then((respuesta) => respuesta.json())
+      .then((proyectos) => {
+        proyectos.forEach((proyecto) => {
+          const tarjetaHTML = `
+            <article class="tarjeta-proyecto">
+              <div class="contenido-tarjeta">
+                <h3>${proyecto.titulo}</h3>
+                <p>${proyecto.descripcion}</p>
+                <div class="detalles-extra">
+                  <p><strong>Stack:</strong> ${proyecto.stack}</p>
+                  <p>${proyecto.impacto}</p>
+                </div>
+              </div>
+              <button type="button" class="btn-proyecto btn-detalles">Ver detalles</button>
+            </article>
+          `;
+
+          if (proyecto.extra) {
+            contenedorExtra.insertAdjacentHTML("beforeend", tarjetaHTML);
+          } else {
+            contenedorPrincipales.insertAdjacentHTML("beforeend", tarjetaHTML);
+          }
+        });
+      })
+      .catch((error) => console.error("Error al cargar los proyectos desde JSON:", error));
+  }
+
+  // DELEGACIÓN DE EVENTOS PARA EL BOTÓN "VER DETALLES" EN ELEMENTOS DINÁMICOS
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.classList.contains("btn-detalles")) {
+      const boton = e.target;
       const tarjeta = boton.closest("article");
       const detalles = tarjeta.querySelector(".detalles-extra");
 
@@ -11,18 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
         detalles.classList.toggle("activo");
         boton.textContent = detalles.classList.contains("activo") ? "Ocultar detalles" : "Ver detalles";
       }
-    });
+    }
   });
 
   // 2. FUNCIONALIDAD "VER MÁS PROYECTOS"
   const btnVerMas = document.getElementById("ver-mas");
-  const contenedorExtra = document.getElementById("proyectos-extra");
+  const desplegableExtra = document.getElementById("proyectos-extra");
 
-  if (btnVerMas && contenedorExtra) {
+  if (btnVerMas && desplegableExtra) {
     const textoBoton = btnVerMas.querySelector(".texto-boton");
 
     btnVerMas.addEventListener("click", () => {
-      const estaActivo = contenedorExtra.classList.toggle("activo");
+      const estaActivo = desplegableExtra.classList.toggle("activo");
       btnVerMas.setAttribute("aria-expanded", estaActivo);
 
       if (textoBoton) {

@@ -1,0 +1,30 @@
+[
+  {
+    "titulo": "Pipeline de Datos ETL",
+    "descripcion": "Ingesta y procesamiento masivo de datos con validaciones automatizadas.",
+    "stack": "Python, Apache Airflow, PostgreSQL.",
+    "impacto": "Automatización de procesos nocturnos con reducción del 40% en tiempos de ejecución.",
+    "extra": false
+  },
+  {
+    "titulo": "Dashboard Web",
+    "descripcion": "Panel interactivo en tiempo real para visualización de métricas clave.",
+    "stack": "HTML5, CSS3, JavaScript, Chart.js.",
+    "impacto": "Conexión directa con API RESTful para generación de reportes gerenciales gráficos.",
+    "extra": false
+  },
+  {
+    "titulo": "Aplicación Web Responsive",
+    "descripcion": "Plataforma web construida con HTML, CSS y JavaScript siguiendo diseño adaptable.",
+    "stack": "Flexbox, CSS Grid, JS ES6.",
+    "impacto": "Diseño centrado en la experiencia de usuario (UX) compatible con móviles y tabletas.",
+    "extra": true
+  },
+  {
+    "titulo": "API RESTful de Métricas",
+    "descripcion": "Servicio web seguro en Node.js y MySQL para consumo en dashboards.",
+    "stack": "Node.js, Express, MySQL, JWT.",
+    "impacto": "Implementación de autenticación segura y consultas optimizadas a la base de datos.",
+    "extra": true
+  }
+]
