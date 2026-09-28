@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mensaje) mensaje.addEventListener("input", validarMensaje);
     if (captchaMath) captchaMath.addEventListener("input", validarCaptcha);
 
-    // Evento Submit con respuesta por Modal Animado
+    // Evento Submit con FormData optimizado para FormSubmit
     formulario.addEventListener("submit", function (evento) {
       evento.preventDefault();
 
@@ -185,18 +185,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const esCaptchaValido = validarCaptcha();
 
       if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
+        const datosFormulario = new FormData();
+        datosFormulario.append("name", nombre.value);
+        datosFormulario.append("email", correo.value);
+        datosFormulario.append("message", mensaje.value);
+
         fetch("https://formsubmit.co/ajax/edoncut@hotmail.com", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
             "Accept": "application/json"
           },
-          body: JSON.stringify({
-            nombre: nombre.value,
-            correo: correo.value,
-            mensaje: mensaje.value,
-            _captcha: "false"
-          })
+          body: datosFormulario
         })
           .then(function (respuesta) {
             if (respuesta.ok) {
