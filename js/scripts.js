@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tipear();
   }
 
-  // 5. VALIDACIÓN RIGUROSA Y ENVÍO CON FORMULARIO DE CONTACTO
+  // 5. VALIDACIÓN RIGUROSA Y ENVÍO CON FORMULARIO DE CONTACTO (COMPATIBLE CON CORS)
   const formulario = document.querySelector("#contacto");
 
   if (formulario) {
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mensaje) mensaje.addEventListener("input", validarMensaje);
     if (captchaMath) captchaMath.addEventListener("input", validarCaptcha);
 
-    // ENVÍO DE DATOS EN FORMATO JSON OPTIMIZADO PARA FORMSUBMIT
+    // ENVÍO DE DATOS EN FORMATO x-www-form-urlencoded PARA SOLUCIONAR BLOQUEO CORS
     formulario.addEventListener("submit", function (evento) {
       evento.preventDefault();
 
@@ -287,28 +287,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
         
-        const payloadJSON = {
-          name: nombre.value,
-          email: correo.value,
-          message: mensaje.value,
-          _subject: "Nuevo contacto desde el Sitio Web"
-        };
+        const datosEnvio = new URLSearchParams();
+        datosEnvio.append("name", nombre.value);
+        datosEnvio.append("email", correo.value);
+        datosEnvio.append("message", mensaje.value);
+        datosEnvio.append("_subject", "Nuevo contacto desde el Sitio Web");
+        datosEnvio.append("_captcha", "false");
 
         fetch("https://formsubmit.co/ajax/edoncut@hotmail.com", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "application/json"
           },
-          body: JSON.stringify(payloadJSON)
+          body: datosEnvio
         })
           .then(function (respuesta) {
             if (respuesta.ok) {
               return respuesta.json();
             }
-            throw new Error("Error en la respuesta del servidor");
+            throw new Error("Respuesta de red no exitosa: " + respuesta.status);
           })
-          .then(function () {
+          .then(function (datos) {
             formulario.reset();
             animarTextoExito("¡Mensaje enviado con éxito! Te responderé pronto.");
             abrirModal("modal-exito");
