@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 0. CALCULAR AÑOS Y ANIMAR CONTADOR DE EXPERIENCIA (COLEGIACIÓN DESDE 23/05/2011)
+  // 0. CALCULAR AÑOS Y ANIMAR CONTADOR DE EXPERIENCIA (COLEGIACIÓN DESDE 25/05/2011)
   const elementoContador = document.getElementById("contador-anos");
   
   if (elementoContador) {
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mensaje) mensaje.addEventListener("input", validarMensaje);
     if (captchaMath) captchaMath.addEventListener("input", validarCaptcha);
 
-    // Evento Submit con FormData optimizado para FormSubmit
+    // ENVÍO DE DATOS EN FORMATO JSON OPTIMIZADO PARA FORMSUBMIT
     formulario.addEventListener("submit", function (evento) {
       evento.preventDefault();
 
@@ -286,28 +286,35 @@ document.addEventListener("DOMContentLoaded", () => {
       const esCaptchaValido = validarCaptcha();
 
       if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
-        const datosFormulario = new FormData();
-        datosFormulario.append("name", nombre.value);
-        datosFormulario.append("email", correo.value);
-        datosFormulario.append("message", mensaje.value);
+        
+        const payloadJSON = {
+          name: nombre.value,
+          email: correo.value,
+          message: mensaje.value,
+          _subject: "Nuevo contacto desde el Sitio Web"
+        };
 
         fetch("https://formsubmit.co/ajax/edoncut@hotmail.com", {
           method: "POST",
           headers: {
+            "Content-Type": "application/json",
             "Accept": "application/json"
           },
-          body: datosFormulario
+          body: JSON.stringify(payloadJSON)
         })
           .then(function (respuesta) {
             if (respuesta.ok) {
-              formulario.reset();
-              animarTextoExito("¡Mensaje enviado con éxito! Te responderé pronto.");
-              abrirModal("modal-exito");
-            } else {
-              throw new Error("Error en servidor");
+              return respuesta.json();
             }
+            throw new Error("Error en la respuesta del servidor");
           })
-          .catch(function () {
+          .then(function () {
+            formulario.reset();
+            animarTextoExito("¡Mensaje enviado con éxito! Te responderé pronto.");
+            abrirModal("modal-exito");
+          })
+          .catch(function (error) {
+            console.error("Detalle del error:", error);
             animarTextoExito("Ocurrió un error al enviar. Por favor intenta más tarde.");
             abrirModal("modal-exito");
           });

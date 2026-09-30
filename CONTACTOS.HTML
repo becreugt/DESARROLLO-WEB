@@ -52,10 +52,10 @@
                     <p class="error" id="error-mensaje"></p>
                 </div>
 
-                <!-- PREGUNTA MATEMÁTICA ANTI-BOT -->
+                <!-- PREGUNTA MATEMÁTICA ANTI-BOT (SE RETIRÓ name="captcha-math" PARA NO ENVIARLO A FORMSUBMIT) -->
                 <div class="campo-grupo">
                     <label for="captcha-math">Control de seguridad: ¿Cuánto es 3 + 4?</label>
-                    <input type="number" id="captcha-math" name="captcha-math" placeholder="Escribe el resultado">
+                    <input type="number" id="captcha-math" placeholder="Escribe el resultado">
                     <p class="error" id="error-captcha"></p>
                 </div>
 
@@ -65,16 +65,16 @@
             </form>
         </section>
  
-           <!-- MODAL EMERGENTE DE ÉXITO -->
-<div id="modal-exito" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-exito')">
-  <div class="modal-contenido modal-exito-box">
-    <button type="button" class="btn-cerrar-modal" onclick="cerrarModal('modal-exito')">&times;</button>
-    
-    <div class="alerta-exito-estilo">
-      <div id="texto-exito-animado" class="contenedor-palabras"></div>
-    </div>
-  </div>
-</div>
+        <!-- MODAL EMERGENTE DE ÉXITO -->
+        <div id="modal-exito" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-exito')">
+            <div class="modal-contenido modal-exito-box">
+                <button type="button" class="btn-cerrar-modal" onclick="cerrarModal('modal-exito')">&times;</button>
+                
+                <div class="alerta-exito-estilo">
+                    <div id="texto-exito-animado" class="contenedor-palabras"></div>
+                </div>
+            </div>
+        </div>
  
     </main>
 
