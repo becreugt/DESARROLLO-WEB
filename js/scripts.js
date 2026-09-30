@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tipear();
   }
 
-  // 5. VALIDACIÓN RIGUROSA Y ENVÍO CON FORMULARIO DE CONTACTO (COMPATIBLE CON CORS)
+  // 5. VALIDACIÓN RIGUROSA Y ENVÍO DE FORMULARIO CON FORMDATA
   const formulario = document.querySelector("#contacto");
 
   if (formulario) {
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mensaje) mensaje.addEventListener("input", validarMensaje);
     if (captchaMath) captchaMath.addEventListener("input", validarCaptcha);
 
-    // ENVÍO DE DATOS EN FORMATO x-www-form-urlencoded PARA SOLUCIONAR BLOQUEO CORS
+    // ENVÍO MEDIANTE FORMDATA PARA ASEGURAR COMPATIBILIDAD CON FORMSUBMIT AJAX
     formulario.addEventListener("submit", function (evento) {
       evento.preventDefault();
 
@@ -287,26 +287,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
         
-        const datosEnvio = new URLSearchParams();
-        datosEnvio.append("name", nombre.value);
-        datosEnvio.append("email", correo.value);
-        datosEnvio.append("message", mensaje.value);
-        datosEnvio.append("_subject", "Nuevo contacto desde el Sitio Web");
-        datosEnvio.append("_captcha", "false");
+        const datosFormulario = new FormData();
+        datosFormulario.append("name", nombre.value);
+        datosFormulario.append("email", correo.value);
+        datosFormulario.append("message", mensaje.value);
+        datosFormulario.append("_subject", "Nuevo contacto desde el Sitio Web");
+        datosFormulario.append("_template", "table");
+        datosFormulario.append("_captcha", "false");
 
         fetch("https://formsubmit.co/ajax/edoncut@hotmail.com", {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "application/json"
           },
-          body: datosEnvio
+          body: datosFormulario
         })
           .then(function (respuesta) {
             if (respuesta.ok) {
               return respuesta.json();
             }
-            throw new Error("Respuesta de red no exitosa: " + respuesta.status);
+            throw new Error("Respuesta del servidor: " + respuesta.status);
           })
           .then(function (datos) {
             formulario.reset();
