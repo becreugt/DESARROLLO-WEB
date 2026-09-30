@@ -1,4 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  // 0. CALCULAR AÑOS Y ANIMAR CONTADOR DE EXPERIENCIA (COLEGIACIÓN DESDE 25/05/2011)
+  const elementoContador = document.getElementById("contador-anos");
+  
+  if (elementoContador) {
+    const fechaColegiacion = new Date(2011, 4, 25); // Mes 4 es Mayo (0-indexado)
+    const hoy = new Date();
+
+    let anosExperiencia = hoy.getFullYear() - fechaColegiacion.getFullYear();
+    const diferenciaMeses = hoy.getMonth() - fechaColegiacion.getMonth();
+
+    if (diferenciaMeses < 0 || (diferenciaMeses === 0 && hoy.getDate() < fechaColegiacion.getDate())) {
+      anosExperiencia--;
+    }
+
+    let animado = false;
+
+    const animarContador = () => {
+      let inicio = 0;
+      const duracion = 1500;
+      const incremento = anosExperiencia / (duracion / 16);
+
+      const timer = setInterval(() => {
+        inicio += incremento;
+        if (inicio >= anosExperiencia) {
+          elementoContador.textContent = `+${anosExperiencia}`;
+          clearInterval(timer);
+        } else {
+          elementoContador.textContent = `+${Math.floor(inicio)}`;
+        }
+      }, 16);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animado) {
+          animado = true;
+          animarContador();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    observer.observe(elementoContador);
+  }
+
   // 1. CARGA DINÁMICA DE PROYECTOS DESDE EL ARCHIVO PROYECTOS.JSON
   const contenedorPrincipales = document.getElementById("contenedor-proyectos-principales");
   const contenedorExtra = document.getElementById("contenedor-proyectos-extra");
