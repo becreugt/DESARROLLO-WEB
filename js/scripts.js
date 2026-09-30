@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 0. CALCULAR AÑOS Y ANIMAR CONTADOR DE EXPERIENCIA (COLEGIACIÓN DESDE 25/05/2011)
+  // 0. CALCULAR AÑOS Y ANIMAR CONTADOR DE EXPERIENCIA (COLEGIACIÓN DESDE 23/05/2011)
   const elementoContador = document.getElementById("contador-anos");
   
   if (elementoContador) {
