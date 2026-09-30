@@ -63,7 +63,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3. EFECTO MECANOGRAFÍA (TYPEWRITER)
+  // 3. COPIAR CORREO AL PORTAPAPELES (ANTI-SPAM)
+  const btnCopiarCorreo = document.getElementById("btn-copiar-correo");
+
+  if (btnCopiarCorreo) {
+    btnCopiarCorreo.addEventListener("click", () => {
+      const correo = btnCopiarCorreo.getAttribute("data-email");
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(correo).then(() => {
+          const textoSpan = btnCopiarCorreo.querySelector(".texto");
+          const textoOriginal = textoSpan.textContent;
+
+          textoSpan.textContent = "¡Correo Copiado!";
+          btnCopiarCorreo.classList.add("copiado");
+
+          setTimeout(() => {
+            textoSpan.textContent = textoOriginal;
+            btnCopiarCorreo.classList.remove("copiado");
+          }, 2000);
+        });
+      }
+    });
+  }
+
+  // 4. EFECTO MECANOGRAFÍA (TYPEWRITER)
   const elementoTexto = document.getElementById("texto-tipeado");
   if (elementoTexto) {
     const frases = [
@@ -104,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tipear();
   }
 
-  // 4. VALIDACIÓN RIGUROSA Y ENVÍO CON FORMULARIO DE CONTACTO
+  // 5. VALIDACIÓN RIGUROSA Y ENVÍO CON FORMULARIO DE CONTACTO
   const formulario = document.querySelector("#contacto");
 
   if (formulario) {
@@ -248,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================================================
-   5. FUNCIONES PARA MANEJO DE VENTANAS MODALES
+   6. FUNCIONES PARA MANEJO DE VENTANAS MODALES
    ========================================================= */
 function abrirModal(id) {
   const modal = document.getElementById(id);

@@ -24,21 +24,45 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main>
-    <!-- SECCIÓN PERFIL CON FOTO Y DATOS -->
-    <section class="perfil-card">
-      <div class="perfil-header">
-        <img src="img/perfil.jpg" alt="Foto de Carlos Bonilla" class="perfil-avatar">
-        <div class="perfil-info">
-          <h2>Carlos Bonilla</h2>
-          <p class="titulo-profesional">Data Engineer & Full-Stack Web Developer</p>
-          <p class="descripcion-corta">
-            Especialista en la integración de canalizaciones de datos con interfaces web modernas. Apasionado por transformar datos complejos en soluciones visuales e intuitivas.
-          </p>
+    <!-- SECCIÓN PERFIL CON FOTO Y DATOS ACTUALIZADOS -->
+    <section class="perfil-card tarjeta-efecto">
+      <div class="perfil-header text-center">
+        
+        <!-- AVATAR / FOTO -->
+        <div class="contenedor-avatar">
+          <img src="img/perfil.jpg" alt="Foto de Carlos Bonilla" class="perfil-avatar">
+        </div>
 
-          <!-- DATOS DE CONTACTO -->
-          <div class="datos-contacto">
-            <p>📧 <strong>Correo:</strong> <a href="mailto:edoncut@hotmail.com">edoncut@hotmail.com</a></p>
-            <p>📱 <strong>Móvil:</strong> <a href="tel:+50242550002">+(502) 42550002</a></p>
+        <!-- NOMBRE Y LEYENDA PROFESIONAL INTERACTIVA -->
+        <div class="perfil-info">
+          <h2 class="nombre-perfil">Carlos Bonilla</h2>
+          
+          <!-- TARJETA DESTACADA PARA LA LEYENDA -->
+          <div class="leyenda-profesional-box">
+            <span class="badge-rol">
+              <span class="punto-activo"></span> Data Engineer & Full-Stack Web Developer
+            </span>
+            <p class="descripcion-corta">
+              Especialista en la integración de canalizaciones de datos con interfaces web modernas. 
+              Apasionado por transformar datos complejos en soluciones visuales e intuitivas.
+            </p>
+          </div>
+
+          <!-- DATOS DE CONTACTO INTERACTIVOS (PROTEGIDOS CONTRA SPAM) -->
+          <div class="datos-contacto-interactivos">
+            <button type="button" id="btn-copiar-correo" class="btn-contacto-chip" data-email="edoncut@hotmail.com" aria-label="Copiar correo electrónico al portapapeles">
+              <span class="icono">📧</span>
+              <span class="texto">Copiar Correo</span>
+            </button>
+
+            <a href="https://wa.me/50242550002?text=Hola%20Carlos,%20vi%20tu%20perfil%20web%20y%20me%20gustar%C3%ADa%20contactarte." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-contacto-chip btn-whatsapp"
+               aria-label="Contactar por WhatsApp">
+              <span class="icono">💬</span>
+              <span class="texto">WhatsApp Directo</span>
+            </a>
           </div>
         </div>
       </div>
@@ -53,7 +77,7 @@
       </div>
 
       <div class="perfil-acciones" style="text-align: center;">
-        <a href="CONTACTOS.HTML" class="btn-primario">Contactar</a>
+        <a href="CONTACTOS.HTML" class="btn-primario">Contactar por Formulario</a>
       </div>
     </section>
 

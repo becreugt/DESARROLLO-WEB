@@ -40,7 +40,7 @@
       <div class="grid-servicios">
         
         <!-- Servicio 1 -->
-        <article class="tarjeta-servicio" onclick="abrirModal('modal-datos')">
+        <article class="tarjeta-servicio" role="button" tabindex="0" onclick="abrirModal('modal-datos')">
           <div class="icono-servicio">📊</div>
           <h3>Ingeniería de Datos</h3>
           <p>Diseño y optimización de bases de datos, flujos ETL y procesamiento masivo de información.</p>
@@ -48,7 +48,7 @@
         </article>
 
         <!-- Servicio 2 -->
-        <article class="tarjeta-servicio" onclick="abrirModal('modal-web')">
+        <article class="tarjeta-servicio" role="button" tabindex="0" onclick="abrirModal('modal-web')">
           <div class="icono-servicio">💻</div>
           <h3>Desarrollo Web</h3>
           <p>Creación de sitios y aplicaciones web modernas, rápidas y adaptadas a cualquier dispositivo.</p>
@@ -56,7 +56,7 @@
         </article>
 
         <!-- Servicio 3 -->
-        <article class="tarjeta-servicio" onclick="abrirModal('modal-analytics')">
+        <article class="tarjeta-servicio" role="button" tabindex="0" onclick="abrirModal('modal-analytics')">
           <div class="icono-servicio">📈</div>
           <h3>Analytics & Dashboards</h3>
           <p>Visualización de métricas clave para facilitar la toma de decisiones basadas en datos.</p>
@@ -93,7 +93,7 @@
   <!-- MODALES INFORMATIVOS (VENTANAS EMERGENTES) -->
   <div id="modal-datos" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-datos')">
     <div class="modal-contenido">
-      <button class="modal-cerrar" onclick="cerrarModal('modal-datos')">&times;</button>
+      <button class="modal-cerrar" type="button" onclick="cerrarModal('modal-datos')">&times;</button>
       <div class="modal-header">
         <span class="modal-icono">📊</span>
         <h3>Ingeniería de Datos</h3>
@@ -110,7 +110,7 @@
 
   <div id="modal-web" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-web')">
     <div class="modal-contenido">
-      <button class="modal-cerrar" onclick="cerrarModal('modal-web')">&times;</button>
+      <button class="modal-cerrar" type="button" onclick="cerrarModal('modal-web')">&times;</button>
       <div class="modal-header">
         <span class="modal-icono">💻</span>
         <h3>Desarrollo Web</h3>
@@ -127,7 +127,7 @@
 
   <div id="modal-analytics" class="modal-overlay" onclick="cerrarModalAfuera(event, 'modal-analytics')">
     <div class="modal-contenido">
-      <button class="modal-cerrar" onclick="cerrarModal('modal-analytics')">&times;</button>
+      <button class="modal-cerrar" type="button" onclick="cerrarModal('modal-analytics')">&times;</button>
       <div class="modal-header">
         <span class="modal-icono">📈</span>
         <h3>Analytics & Dashboards</h3>
