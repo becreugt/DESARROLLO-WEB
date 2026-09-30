@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tipear();
   }
 
-  // 5. VALIDACIÓN RIGUROSA Y ENVÍO DE FORMULARIO CON FORMDATA
+  // 5. VALIDACIÓN RIGUROSA CON ENVÍO NATIVO
   const formulario = document.querySelector("#contacto");
 
   if (formulario) {
@@ -276,48 +276,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mensaje) mensaje.addEventListener("input", validarMensaje);
     if (captchaMath) captchaMath.addEventListener("input", validarCaptcha);
 
-    // ENVÍO MEDIANTE FORMDATA PARA ASEGURAR COMPATIBILIDAD CON FORMSUBMIT AJAX
+    // PROCESAMIENTO NATIVO: Si todo es válido, permite el submit HTML nativo
     formulario.addEventListener("submit", function (evento) {
-      evento.preventDefault();
-
       const esNombreValido = validarNombre();
       const esCorreoValido = validarCorreo();
       const esMensajeValido = validarMensaje();
       const esCaptchaValido = validarCaptcha();
 
-      if (esNombreValido && esCorreoValido && esMensajeValido && esCaptchaValido) {
-        
-        const datosFormulario = new FormData();
-        datosFormulario.append("name", nombre.value);
-        datosFormulario.append("email", correo.value);
-        datosFormulario.append("message", mensaje.value);
-        datosFormulario.append("_subject", "Nuevo contacto desde el Sitio Web");
-        datosFormulario.append("_template", "table");
-        datosFormulario.append("_captcha", "false");
-
-        fetch("https://formsubmit.co/ajax/edoncut@hotmail.com", {
-          method: "POST",
-          headers: {
-            "Accept": "application/json"
-          },
-          body: datosFormulario
-        })
-          .then(function (respuesta) {
-            if (respuesta.ok) {
-              return respuesta.json();
-            }
-            throw new Error("Respuesta del servidor: " + respuesta.status);
-          })
-          .then(function (datos) {
-            formulario.reset();
-            animarTextoExito("¡Mensaje enviado con éxito! Te responderé pronto.");
-            abrirModal("modal-exito");
-          })
-          .catch(function (error) {
-            console.error("Detalle del error:", error);
-            animarTextoExito("Ocurrió un error al enviar. Por favor intenta más tarde.");
-            abrirModal("modal-exito");
-          });
+      if (!esNombreValido || !esCorreoValido || !esMensajeValido || !esCaptchaValido) {
+        evento.preventDefault();
       }
     });
   }
